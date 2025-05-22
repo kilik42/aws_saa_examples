@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "== delete bucket =="
+
+if [ -z "$1" ]; then
+  echo "Please provide the full bucket name (with timestamp)."
+  exit 1
+else
+  echo "Bucket to delete: $1"
+fi
+
+BUCKET_NAME="$1"
+echo "Deleting bucket: $BUCKET_NAME"
+aws s3api delete-bucket --bucket "$BUCKET_NAME"

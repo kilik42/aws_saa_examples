@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  echo "Please provide a base bucket name. Example: ./create-bucket my-bucket"
+  exit 1
+else
+  echo "Base name received: $1"
+fi
+
+BUCKET_NAME="${1}-$(date +%s)"  # Ensures uniqueness
+
+echo "Creating bucket: $BUCKET_NAME"
+aws s3api create-bucket --bucket "$BUCKET_NAME"

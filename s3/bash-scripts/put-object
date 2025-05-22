@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Number of files to create (random between 5 and 10)
+NUM_FILES=$((RANDOM % 6 + 5))
+
+echo "Creating $NUM_FILES random files..."
+
+for ((i = 1; i <= NUM_FILES; i++)); do
+  # Generate a random filename
+  FILENAME="file_$(date +%s%N | cut -b1-13)_$RANDOM.txt"
+
+  # Optional: Add some random content
+  echo "This is random file $i" > "$FILENAME"
+  echo "Random number: $RANDOM" >> "$FILENAME"
+
+  echo "Created: $FILENAME"
+  sleep 0.1  # Slight delay to help ensure unique timestamps
+done
