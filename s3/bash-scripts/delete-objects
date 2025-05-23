@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+echo "== delete-objects"
+
+# Exit immediately if any command fails
+set -e
+
+# Check for bucket name
+if [ -z "$1" ]; then
+  echo "There needs to be a bucket name eg. ./delete-objects my-bucket"
+  exit 1
+fi
+
+BUCKET_NAME=$1
+
+echo "Deleting all objects in bucket: $BUCKET_NAME..."
+aws s3api delete-objects --bucket $BUCKET_NAME
+
+aws s3 rm "s3://$BUCKET_NAME" --recursive
