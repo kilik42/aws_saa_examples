@@ -4,6 +4,9 @@ tasks:
   - name: utils
     before: |
       sudo apt-get install tree
+# https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4
+# https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-linux-mac.html
+
   - name : powershell
     before: |
       sudo apt-get update
@@ -14,6 +17,9 @@ tasks:
       rm packages-microsoft-prod.deb
       sudo apt-get update
       sudo apt-get install -y powershell
+      # pwsh
+      # Install-Module -Name AWS.Tools.Installer
+      
   - name: aws-cli
   - name: Script Task
     env:
