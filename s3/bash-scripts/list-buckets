@@ -3,3 +3,6 @@
 echo "== list bucket"
 
 aws s3api list-buckets 
+
+aws s3api list-buckets --query "Buckets[*].[Name, CreationDate]" --output json \
+| jq 'sort_by(.[1]) | reverse'

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+echo "== list newest buckets"
+
+aws s3api list-buckets \
+  | jq -r '.Buckets                                     # Get the list of buckets
+           | sort_by(.CreationDate)                    # Sort buckets by creation date (oldest first)
+           | reverse                                   # Reverse to get newest first
+           | .[0:5]                                    # Take the first 5 (i.e., the 5 newest)
+           | .[]                                       # Iterate over those 5 buckets
+           | .Name'                                    # Output just the Name field
+
+echo "..."
