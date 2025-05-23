@@ -1,33 +1,21 @@
 #!/usr/bin/env bash
+echo "== put-object"
 
-# esit immediately if any command returns a non-zero status
-set -e
-# Set the output directory name
-OUTPUT_DIR="random-files"
+# Check for bucket name
+if [ -z "$1" ]; then
+  echo "There needs to be a bucket name eg. ../put-object my-bucket my-file.txt"
+  exit 1
+fi
 
-rm -rf $OUTPUT_DIR
 
-mkdir -p "$OUTPUT_DIR"
+# Check for filename
+if [ -z "$2" ]; then
+  echo "There needs to be a filename eg. ../put-object my-bucket my-file.txt"
+  exit 1
+fi
 
-# Number of files to create (random between 5 and 10)
-NUM_FILES=$((RANDOM % 6 + 5))
 
-echo "Creating $NUM_FILES random files in $OUTPUT_DIR..."
-
-for ((i = 1; i <= NUM_FILES; i++)); do
-  # Generate a random filename
-  FILENAME="file_$(date +%s%N | cut -b1-13)_$RANDOM.txt"
-
-  # Full path
-  FILEPATH="$OUTPUT_DIR/$FILENAME"
-
-  # Add random content
-  echo "This is random file $i" > "$FILEPATH"
-  echo "Random number: $RANDOM" >> "$FILEPATH"
-
-  echo "Created: $FILEPATH"
-  sleep 0.1  # Ensure unique timestamp
-done
-
-# Show the directory structure
-tree "$OUTPUT_DIR"
+aws s3api put-object \
+--bucket $BUCKET_NAME
+--key $key
+--body $FILENAME
