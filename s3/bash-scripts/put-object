@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
-
 # esit immediately if any command returns a non-zero status
 set -e
-
 # Set the output directory name
 OUTPUT_DIR="random-files"
 
-
-rm -r $OUTPUT_DIR
+rm -rf $OUTPUT_DIR
 
 mkdir -p "$OUTPUT_DIR"
 
