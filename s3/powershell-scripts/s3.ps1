@@ -7,7 +7,22 @@ $bucketName = Read-Host -Prompt 'Enter the S3 bucket name'
 Write-Host "AWS Region: $region"
 Write-Host "S3 Bucket: $bucketName"
 
-New-S3Bucket -BucketName $bucketName -Region $region 
+function BucketExists {
+    $bucket = Get-S3bucket -BucketName $bucketName -ErrorAction SilentlyContinue
+    return $null -ne $bucket
+}
+
+
+if (-not (BucketExists)) {
+    Write-Host "Bucket does not exist"
+    New-S3Bucket -BucketName $bucketName -Region $region
+} else {
+    Write-Host "Bucket already exists"
+}
+
+
+New-S3Bucket = Get-S3Bucket -BucketName $bucketName -Region $region
+
 
 
 #create a new file
