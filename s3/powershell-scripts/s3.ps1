@@ -15,4 +15,6 @@ New-S3Bucket -BucketName $bucketName -Region $region
 $fileName = 'myfile.txt'
 $fileContent = 'hello world'
 
-Set-Content -Path
+Set-Content -Path  $fileName -Value $fileContent
+
+Write-S3Object -BucketName $bucketName -File $fileName -Key fileName
