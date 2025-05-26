@@ -7,7 +7,5 @@ Resources:
   # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html
 
     Type: 'AWS::S3::Bucket'
-    DeletionPolicy: Retain
-    Properties:
-      BucketName: DOC-EXAMPLE-BUCKET
+    #we dont need to supply a bucket name as aws will generate a random name for us
 
