@@ -28,6 +28,8 @@ number_of_files.times.each do |i|
   filename = "file_#{i}.txt"
   output_path = "/tmp/#{filename}"
 
-  File.open
+  File.open(output_path, "w") do |f|
+    f.write SecurerRandom.uuid
+  end
 end
 
