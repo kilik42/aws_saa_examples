@@ -3,4 +3,5 @@ Resources:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
     Properties:
-      BucketName: DOC-EXAMPLE-BUCKET
+      BucketName: DOC-EXAMPLE-BUCKETAWSTemplateFormatVersion: "2010-09-09"
+
