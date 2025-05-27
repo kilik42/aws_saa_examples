@@ -15,7 +15,7 @@ tasks:
       sudo apt update
 
       sudo apt-get install terraform
-
+    
 
   - name: utils
     before: |
