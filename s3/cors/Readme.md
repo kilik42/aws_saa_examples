@@ -16,6 +16,8 @@ aws s3api put-bucket-policy --bucket cors-fun-ac-34444476 --policy file://bucket
 
 ## turn on statuc website hosting
 
+aws s3api put-bucket-website --bucket amzn-s3-demo-bucket --website-configuration file://website.json
+
 ## uploiar our index.html file an dincluea resoruce that owuld be cross orign
 
 
