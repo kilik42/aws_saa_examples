@@ -20,7 +20,7 @@ aws s3api put-bucket-website --bucket cors-fun-ac-34444476 --website-configurati
 
 ## upload our index.html file an dincluea resoruce that owuld be cross orign
 
-aws s3 cp index.html cors-fun-ac-34444476 
+aws s3 cp index.html s3://cors-fun-ac-34444476 
 
 ## get the website endpoint for s3
 aws s3 website s3://amzn-s3-demo-bucket/ \
