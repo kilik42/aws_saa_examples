@@ -11,6 +11,7 @@ aws s3api put-public-access-block \
 ``
 
 ### create a bucket policy
+aws s3api put-bucket-policy --bucket cors-fun-ac-34444476 --policy file://bucket-policy.json
 
 
 ## turn on statuc website hosting
