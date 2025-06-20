@@ -2,7 +2,7 @@
 AWSTemplateFormatVersion: version date
 
 Description:
-  String
+ "create a template for AWS CloudFormation that defines a set of resources and their configurations"
 
 Metadata:
   template metadata
