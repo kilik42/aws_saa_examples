@@ -1,29 +1,39 @@
----
-AWSTemplateFormatVersion: version date
-
-Description:
- "create a template for AWS CloudFormation that defines a set of resources and their configurations"
-
-Metadata:
-  template metadata
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample CloudFormation template with YAML comments.
 
 Parameters:
-  set of parameters
+  BucketName:
+    Type: String
+    Description: "sts fun"
+  BucketVersioning:
+    Type: String
+    Default: Enabled
+    AllowedValues:
+      - Enabled
+      - Suspended
+    Description: Enable or suspend versioning for the S3 bucket.
 
-Rules:
-  set of rules
 
-Mappings:
-  set of mappings
-
-Conditions:
-  set of conditions
-
-Transform:
-  set of transforms
-
+# Resources section
 Resources:
-  set of resources
-
-Outputs:
-  set of outputs
+  StsRole: 
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - s3.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Path: /
+      Policies:
+        - PolicyName: s3access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: '*'
+                Resource: !Sub 'arn:aws:s3:::*'
